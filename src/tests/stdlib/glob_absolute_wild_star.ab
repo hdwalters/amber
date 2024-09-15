@@ -1,0 +1,30 @@
+import * from "std/fs"
+import * from "std/text"
+
+// Output
+// [/tmp/tmpdir/other1.csv]
+// [/tmp/tmpdir/other2.csv]
+// [/tmp/tmpdir/other99.csv]
+// [/tmp/tmpdir/other.csv]
+
+main {
+    let tmpdir = trust $ mktemp -d $
+    trust {
+        $ touch {tmpdir}/1st\ file\ with\ spaces.txt $
+        $ touch {tmpdir}/2nd\ file\ with\ spaces.txt $
+        $ touch {tmpdir}/file1.txt $
+        $ touch {tmpdir}/file2.txt $
+        $ touch {tmpdir}/other.csv $
+        $ touch {tmpdir}/other1.csv $
+        $ touch {tmpdir}/other2.csv $
+        $ touch {tmpdir}/other99.csv $
+    }
+
+    let files = glob("{tmpdir}/other*.csv") failed { echo "*glob failed*" }
+    loop file in files {
+        file = replace_regex(file, tmpdir, "/tmp/tmpdir", true)
+        echo "[{file}]"
+    }
+
+    trust $ rm -rf {tmpdir} $
+}
