@@ -1,3 +1,5 @@
+import * from "std/text"
+
 /// Checks if a directory exists.
 pub fun dir_exist(path) {
     $[ -d "{path}" ]$ failed {
@@ -75,4 +77,13 @@ pub fun change_owner(user: Text, path: Text): Bool {
     }
 
     return false
+}
+
+/// Finds all files or directories matching a file glob.  Escapes all
+/// characters in the passed-in glob apart from "*", "?" and "/", to
+/// prevent injection attacks.
+pub fun glob(path: Text): [Text]? {
+    path = replace_regex(path, "\([^*?/]\)", "\\\\\1")
+    let files = $eval "for file in {path}; do [ -e \\\"\\\$file\\\" ] && echo \\\"\\\$file\\\"; done"$?
+    return split(files, "\n")
 }
