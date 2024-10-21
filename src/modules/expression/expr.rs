@@ -188,6 +188,13 @@ impl TranslateModule for Expr {
             VariableGet
         ])
     }
+
+    fn surround_iter(&self, meta: &mut TranslateMetadata, name: &str) -> Option<(String, String)> {
+        match &self.value {
+            Some(ExprType::LinesInvocation(value)) => value.surround_iter(meta, name),
+            _ => None,
+        }
+    }
 }
 
 impl DocumentationModule for Expr {
