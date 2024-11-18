@@ -137,6 +137,15 @@ impl Expr {
             _ => None
         }
     }
+
+    pub fn get_text_if_literal(&self) -> Option<String> {
+        if let Some(value) = &self.value {
+            if let ExprType::Text(text) = value {
+                return text.get_text_if_literal();
+            }
+        }
+        None
+    }
 }
 
 impl SyntaxModule<ParserMetadata> for Expr {
