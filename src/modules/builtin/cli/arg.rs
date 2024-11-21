@@ -1,3 +1,4 @@
+use std::rc::Rc;
 use heraclitus_compiler::prelude::*;
 use crate::docs::module::DocumentationModule;
 use crate::modules::expression::expr::Expr;
@@ -5,19 +6,29 @@ use crate::modules::types::{Type, Typed};
 use crate::translate::module::TranslateModule;
 use crate::utils::metadata::{ParserMetadata, TranslateMetadata};
 
-#[derive(Debug, Clone)]
+#[derive(Debug)]
 #[allow(dead_code)]
+struct ArgImpl {
+    option: String,
+    default: Expr,
+    help: String,
+}
+
+impl ArgImpl {
+    fn new(option: String, default: Expr, help: String) -> Self {
+        Self { option, default, help }
+    }
+}
+
+#[derive(Debug, Clone)]
 pub struct CliArg {
-    parser: Box<Option<Expr>>,
-    option: Box<Option<Expr>>,
-    default: Box<Option<Expr>>,
-    help: Box<Option<Expr>>,
+    arg: Option<Rc<ArgImpl>>,
 }
 
 impl Typed for CliArg {
     fn get_type(&self) -> Type {
-        (*self.default).as_ref()
-            .map(|default| default.kind.clone())
+        self.arg.as_ref()
+            .map(|arg| arg.default.kind.clone())
             .unwrap_or(Type::Null)
     }
 }
@@ -26,12 +37,7 @@ impl SyntaxModule<ParserMetadata> for CliArg {
     syntax_name!("Argument Invocation");
 
     fn new() -> Self {
-        Self {
-            parser: Box::new(None),
-            option: Box::new(None),
-            default: Box::new(None),
-            help: Box::new(None),
-        }
+        Self { arg: None }
     }
 
     fn parse(&mut self, meta: &mut ParserMetadata) -> SyntaxResult {
@@ -43,16 +49,24 @@ impl SyntaxModule<ParserMetadata> for CliArg {
         token(meta, "(")?;
         syntax(meta, &mut parser)?;
         token(meta, ",")?;
+        let option_tok = meta.get_current_token();
         syntax(meta, &mut option)?;
         token(meta, ",")?;
         syntax(meta, &mut default)?;
         token(meta, ",")?;
+        let help_tok = meta.get_current_token();
         syntax(meta, &mut help)?;
         token(meta, ")")?;
-        self.parser = Box::new(Some(parser));
-        self.option = Box::new(Some(option));
-        self.default = Box::new(Some(default));
-        self.help = Box::new(Some(help));
+        let option = match option.get_text_if_literal() {
+            Some(option) => option,
+            None => return error!(meta, option_tok, "Expected literal string"),
+        };
+        let help = match help.get_text_if_literal() {
+            Some(help) => help,
+            None => return error!(meta, help_tok, "Expected literal string"),
+        };
+        let arg = ArgImpl::new(option, default, help);
+        self.arg = Some(Rc::new(arg));
         Ok(())
     }
 }
