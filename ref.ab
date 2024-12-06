@@ -1,0 +1,14 @@
+#!/usr/bin/env amber
+
+fun set_ref(ref numbers: [Num]): Null {
+    echo "In fun before set: {numbers}"
+    numbers = [4, 5, 6]
+    echo "In fun after set: {numbers}"
+}
+
+main {
+    let numbers = [1, 2, 3]
+    echo "In main before call: {numbers}"
+    set_ref(numbers)
+    echo "In main after call: {numbers}"
+}
