@@ -1,0 +1,20 @@
+#!/usr/bin/env amber
+
+fun text_param(name: Text, default: Text, help: Text): Text {
+}
+
+fun num_param(name: Text, default: Num, help: Text): Num {
+}
+
+fun do_getopt(args: [Text]): Null {
+}
+
+main(args) {
+    let parser = parser("Command line interface test script")
+    let name = param(parser, "name", "Nobody", "What is your name")
+    let age = param(parser, "-a|--age", 0, "How old are you")
+    let verbose = param(parser, "-v|--verbose", false, "Verbose logging")
+    getopt(parser, args)
+    echo "{name} is {age} years old"
+    // echo name + age
+}

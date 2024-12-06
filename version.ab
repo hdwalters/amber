@@ -1,0 +1,10 @@
+#!/usr/bin/env amber
+
+fun bash_version(): [Num] {
+    let version = [Num]
+    trust $ {nameof version}=("\$\{BASH_VERSINFO[@]:0:4}") $
+    return version
+}
+
+let version = bash_version()
+echo "Bash version [{version}] has {len version} components"

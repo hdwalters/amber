@@ -1,0 +1,14 @@
+#!/usr/bin/env amber
+import { trim } from "std/text"
+
+fun trim2(text: Text): Text {
+    let prefix = trust $ echo "\$\{{nameof text}%%[![:space:]]*}" $
+    let suffix = trust $ echo "\$\{{nameof text}##*[![:space:]]}" $
+    text = trust $ echo "\$\{text#"{prefix}"}" $
+    text = trust $ echo "\$\{text%"{suffix}"}" $
+    return text
+}
+
+for line in lines("input.txt") {
+    echo trim2(line)
+}

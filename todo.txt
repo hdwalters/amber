@@ -1,0 +1,2 @@
+* Centralise generation of Bash function and variable names; I am never entirely sure of the rationale behind the various "__" formats we're using for names
+* Use compile time arithmetic for negative numbers in more places, e.g. in "func(array, -1)"
