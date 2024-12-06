@@ -1,0 +1,37 @@
+#!/usr/bin/env amber
+
+// Parse command line or print help text.
+let args = [
+    "cliglobal.ab",
+    "extract",
+    "--title", "My Fruit",
+    "-iapple",
+    "-ibanana",
+    "-icherry",
+    "-d4",
+    "-u",
+    "one.txt",
+    "two.txt",
+]
+let parser = parser("Test Amber command line parser")
+let command = param(parser, "command", "", "Command name")
+let files = param(parser, "files", [Text], "File paths")
+let title = param(parser, "-t|--title", "", "Title text")
+let items = param(parser, "-i|--items", [Text], "Item text")
+let depth = param(parser, "-d|--depth", 0, "File depth")
+let ultra = param(parser, "-u|--ultra", true, "Ultra flag")
+let verbose = param(parser, "-v|--verbose", false, "Verbose flag")
+getopt(parser, args)
+
+// Print positional parameters and options.
+echo "Command: \"{command}\""
+for index, file in files {
+    echo "File #{index}: \"{file}\""
+}
+echo "Title: \"{title}\""
+for index, item in items {
+    echo "Item #{index}: \"{item}\""
+}
+echo "Depth: {depth}"
+echo "Ultra: {ultra}"
+echo "Verbose: {verbose}"
