@@ -1,0 +1,46 @@
+I would also like to add a standard library function to partition the command line arguments into positional parameters and options (starting `-` or `--`):
+
+```
+import { starts_with } from "std/text"
+
+/// Partitions command line arguments (as received by main) into positional
+/// parameters and options (starting with `-` or `--`).  For use in scripts
+/// where (for example) we need to use a default parameter if none is given,
+/// but use the provided options.
+pub fun partition_args(args: [Text], ref params: [Text], ref options: [Text]): Null {
+    for arg in args {
+        if starts_with(arg, "-") {
+            options += [arg]
+        } else {
+            params += [arg]
+        }
+    }
+}
+```
+
+```
+import { partition_args } from "std/array"
+
+// Output
+// param [0] existing
+// param [1] one
+// param [2] two three four
+// param [3] five
+// option [0] --existing
+// option [1] -xyz
+// option [2] --foo=bar
+// option [3] --baz qux
+
+main(args) {
+    let input_args = ["one", "-xyz", "two three four", "--foo=bar", "five", "--baz qux"]
+    let test_params = ["existing"]
+    let test_options = ["--existing"]
+    partition_args(input_args, test_params, test_options)
+    for index, arg in test_params {
+        echo "param [{index}] {arg}"
+    }
+    for index, arg in test_options {
+        echo "option [{index}] {arg}"
+    }
+}
+```
