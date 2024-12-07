@@ -4,5 +4,5 @@ import * from "std/text"
 // HELLO WORLD
 
 main {
-    echo upper("hello world")
+    echo to_upper("hello world")
 } 

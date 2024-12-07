@@ -4,5 +4,5 @@ import * from "std/array"
 // 2
 
 main {
-    echo array_first_index([1, 2, 3, 4], 3)
+    echo array_index([1, 2, 3, 4], 3)
 } 

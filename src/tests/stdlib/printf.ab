@@ -4,5 +4,5 @@ import * from "std/env"
 // Hello, Amber!
 
 main {
-    printf("%s,%s!\n", ["Hello", " Amber"])
+    text_printf("%s,%s!\n", ["Hello", " Amber"])
 } 

@@ -1,7 +1,7 @@
-pub fun trim(text) {
+pub fun trim_text(text) {
     return trust $ echo "{text}" | xargs $
 }
 
 main {
-    trim("long text")
+    trim_text("long text")
 }
