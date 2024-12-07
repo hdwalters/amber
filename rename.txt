@@ -71,7 +71,7 @@ text.ab   words                 split_words       Yes
 text.ab   join                  join_text         Yes
 text.ab   trim_left             trim_left         -
 text.ab   trim_right            trim_right        -
-text.ab   trim                  trim_both         Yes
+text.ab   trim                  trim_text         Yes
 text.ab   lower                 to_lower          Yes
 text.ab   upper                 to_upper          Yes
 text.ab   parse                 parse_number      Yes
