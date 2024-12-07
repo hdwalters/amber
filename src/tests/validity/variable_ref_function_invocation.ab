@@ -1,12 +1,12 @@
 // Output
 // "sram"
 
-fun reverse(input: Text): Text {
+fun to_reverse(input: Text): Text {
     return trust $ echo {input} | rev $
 }
 
 fun foo(ref a) {
-    a = reverse("mars")
+    a = to_reverse("mars")
 }
 
 let a = ""

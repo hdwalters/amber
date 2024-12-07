@@ -1,10 +1,10 @@
 /// Replaces all occurences of a pattern in the content with the provided replace text.
-pub fun replace(source, search, replace) {
+pub fun replace_all(source, search, replace) {
     return "\$\{source//{search}/{replace}}"
 }
 
 /// Replaces the first occurence of a pattern in the content with the provided replace text.
-pub fun replace_once(source, search, replace) {
+pub fun replace_one(source, search, replace) {
     return "\$\{source/{search}/{replace}}"
 }
 
@@ -13,8 +13,8 @@ pub fun replace_once(source, search, replace) {
 /// Function uses `sed`
 pub fun replace_regex(source: Text, search: Text, replace: Text, extended: Bool = false): Text {
     trust {
-        search = replace(search, "/", "\/")
-        replace = replace(replace, "/", "\/")
+        search = replace_all(search, "/", "\/")
+        replace = replace_all(replace, "/", "\/")
         if extended {
             // GNU sed versions 4.0 through 4.2 support extended regex syntax,
             // but only via the "-r" option; use that if the version information
@@ -29,7 +29,7 @@ pub fun replace_regex(source: Text, search: Text, replace: Text, extended: Bool 
 }
 
 /// Splits the input `text` into an array of substrings using the specified `delimiter`.
-pub fun split(text: Text, delimiter: Text): [Text] {
+pub fun split_text(text: Text, delimiter: Text): [Text] {
     let result = [Text]
     trust $ IFS="{delimiter}" read -rd '' -a {nameof result} < <(printf %s "\${nameof text}") $
     return result
@@ -37,16 +37,16 @@ pub fun split(text: Text, delimiter: Text): [Text] {
 
 /// Splits a `text` into an array of substrings based on newline characters.
 pub fun split_lines(text: Text): [Text] {
-    return split(text, "\n")
+    return split_text(text, "\n")
 }
 
 /// Splits a `text` into an array of substrings based on space character.
-pub fun words(text: Text): [Text] {
-    return split(text, " ")
+pub fun split_words(text: Text): [Text] {
+    return split_text(text, " ")
 }
 
 /// Merges text using the delimeter specified.
-pub fun join(list: [Text], delimiter: Text): Text {
+pub fun join_text(list: [Text], delimiter: Text): Text {
     return trust $ IFS="{delimiter}" ; echo "\$\{{nameof list}[*]}" $
 }
 
@@ -61,29 +61,29 @@ pub fun trim_right(text: Text): Text {
 }
 
 /// Trims the spaces from the text input.
-pub fun trim(text: Text): Text {
+pub fun trim_text(text: Text): Text {
     return trim_left(trim_right(text))
 }
 
 /// Makes the text input lowercase using `tr`.
-pub fun lower(text: Text): Text {
+pub fun to_lower(text: Text): Text {
     return trust $ echo "{text}" | tr '[:upper:]' '[:lower:]' $
 }
 
 /// Makes the text input uppercase using `tr`.
-pub fun upper(text: Text): Text {
+pub fun to_upper(text: Text): Text {
     return trust $ echo "{text}" | tr '[:lower:]' '[:upper:]' $
 }
 
 /// Attempts to parse a given text into a number, returning the parsed number or zero if parsing fails.
 #[allow_absurd_cast]
-pub fun parse(text: Text): Num? {
+pub fun parse_number(text: Text): Num? {
     $ [ -n "{text}" ] && [ "{text}" -eq "{text}" ] 2>/dev/null $?
     return text as Num
 }
 
 /// Splits a text into an array of individual characters.
-pub fun chars(text: Text): [Text] {
+pub fun split_chars(text: Text): [Text] {
     let chars = [Text]
     trust $ for ((i=0; i<\$\{#{nameof text}}; i++)); do
         {nameof chars}+=( "\$\{{nameof text}:\$i:1}" );
@@ -92,7 +92,7 @@ pub fun chars(text: Text): [Text] {
 }
 
 /// Checks if some text contains a value.
-pub fun contains(text: Text, phrase: Text): Bool {
+pub fun contains_text(text: Text, phrase: Text): Bool {
   let result = trust $ if [[ "{text}" == *"{phrase}"* ]]; then
     echo 1
   fi $
@@ -103,7 +103,7 @@ pub fun contains(text: Text, phrase: Text): Bool {
 /// Checks if an array value is in the text.
 pub fun contains_any(text: Text, terms: [Text]): Bool {
     for term in terms {
-        if contains(text, term) {
+        if contains_text(text, term) {
             return true
         }
     }
@@ -114,7 +114,7 @@ pub fun contains_any(text: Text, terms: [Text]): Bool {
 /// Checks if all the arrays values are in the string
 pub fun contains_all(text: Text, terms: [Text]): Bool {
     for term in terms {
-        if not contains(text, term) {
+        if not contains_text(text, term) {
             return false
         }
     }
@@ -127,7 +127,7 @@ pub fun contains_all(text: Text, terms: [Text]): Bool {
 /// Function uses `sed`
 pub fun match_regex(source: Text, search: Text, extended: Bool = false): Bool {
     trust {
-        search = replace(search, "/", "\/")
+        search = replace_all(search, "/", "\/")
         let output = ""
         if extended {
             // GNU sed versions 4.0 through 4.2 support extended regex syntax,
@@ -147,7 +147,7 @@ pub fun match_regex(source: Text, search: Text, extended: Bool = false): Bool {
 }
 
 /// Checks if an array value (with regular expression) is in the text.
-pub fun match_any_regex(text: Text, terms: [Text]): Bool {
+pub fun match_regex_any(text: Text, terms: [Text]): Bool {
     for term in terms {
         if match_regex(text, term, false) {
             return true
@@ -158,7 +158,7 @@ pub fun match_any_regex(text: Text, terms: [Text]): Bool {
 }
 
 /// Reverses text using `rev`.
-pub fun reverse(text: Text): Text {
+pub fun to_reverse(text: Text): Text {
     return trust $ echo "{text}" | rev $
 }
 
@@ -185,7 +185,7 @@ pub fun ends_with(text: Text, suffix: Text): Bool {
 /// If `index` is negative, the substring starts from the end of `text` based on the absolute value of `index`.
 /// If `length` is provided, the substring will include `length` characters; otherwise, it slices to the end of `text`.
 /// If `length` is negative, an empty string is returned.
-pub fun slice(text: Text, index: Num, length: Num = 0): Text {
+pub fun slice_text(text: Text, index: Num, length: Num = 0): Text {
     if length == 0: length = len(text) - index
     if length <= 0: return ""
     return trust $ printf "%.{length}s" "\$\{text:{index}}" $
@@ -200,7 +200,7 @@ pub fun char_at(text: Text, index: Num): Text {
 
 /// Capitalize the first letter of the given `text`.
 #[allow_absurd_cast]
-pub fun capitalize(text: Text): Text {
+pub fun to_capital(text: Text): Text {
     trust {
         if len(text) == 0 {
             return text
@@ -214,13 +214,13 @@ pub fun capitalize(text: Text): Text {
         if status == 0 {
             return $ echo "{text}" | sed "s/^\(.\)/\U\1/" $
         }
-        const first_letter = upper(char_at(text, 0)) 
-        return first_letter + slice(text, 1)
+        const first_letter = to_upper(char_at(text, 0)) 
+        return first_letter + slice_text(text, 1)
     }
 }
 
 /// Pads `text` with the specified `pad` character on left until it reaches the desired `length`.
-pub fun lpad(text: Text, pad: Text, length: Num): Text {
+pub fun lpad_text(text: Text, pad: Text, length: Num): Text {
     if length <= len(text): return text
     length = len(text) - length
     pad = trust $ printf "%{length}s" "" | tr " " "{pad}" $
@@ -228,7 +228,7 @@ pub fun lpad(text: Text, pad: Text, length: Num): Text {
 }
 
 /// Pads `text` with the specified `pad` character on the right until it reaches the desired `length`.
-pub fun rpad(text: Text, pad: Text, length: Num): Text {
+pub fun rpad_text(text: Text, pad: Text, length: Num): Text {
     if length <= len(text): return text
     length = len(text) - length
     pad = trust $ printf "%{length}s" "" | tr " " "{pad}" $
@@ -236,6 +236,6 @@ pub fun rpad(text: Text, pad: Text, length: Num): Text {
 }
 
 /// Pads `text` with zeros on the left until it reaches the desired `length`.
-pub fun zfill(text: Text, length: Num): Text {
-    return lpad(text, "0", length)
+pub fun zfill_text(text: Text, length: Num): Text {
+    return lpad_text(text, "0", length)
 }

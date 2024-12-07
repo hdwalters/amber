@@ -4,5 +4,5 @@ import * from "std/text"
 // Hello world
 
 main {
-    echo capitalize("hello world"); 
+    echo to_capital("hello world"); 
 }
