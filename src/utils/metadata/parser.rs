@@ -71,13 +71,14 @@ impl ParserMetadata {
     pub fn add_var(&mut self, name: &str, kind: Type, is_const: bool) -> Option<usize> {
         let global_id = self.is_global_scope().then(|| self.gen_var_id());
         let scope = self.context.scopes.last_mut().unwrap();
-        scope.add_var(VariableDecl {
+        let var = VariableDecl {
             name: name.to_string(),
             kind,
             global_id,
             is_ref: false,
             is_const,
-        });
+        };
+        scope.add_var(var);
         global_id
     }
 
@@ -85,13 +86,14 @@ impl ParserMetadata {
     pub fn add_param(&mut self, name: &str, kind: Type, is_ref: bool) -> Option<usize> {
         let global_id = self.is_global_scope().then(|| self.gen_var_id());
         let scope = self.context.scopes.last_mut().unwrap();
-        scope.add_var(VariableDecl {
+        let var = VariableDecl {
             name: name.to_string(),
             kind,
             global_id,
             is_ref,
             is_const: false,
-        });
+        };
+        scope.add_var(var);
         global_id
     }
 

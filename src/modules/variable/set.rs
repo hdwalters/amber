@@ -48,7 +48,7 @@ impl SyntaxModule<ParserMetadata> for VariableSet {
         self.is_ref = variable.is_ref;
         // Check for constant reassignment
         if variable.is_const {
-            return error!(meta, tok, format!("Cannot reassign constant"))
+            return error!(meta, tok, "Cannot reassign constant".to_string())
         }
         // Typecheck the variable
         let left_type = variable.kind.clone();

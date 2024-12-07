@@ -23,9 +23,9 @@ use super::declaration_utils::*;
 #[derive(Debug, Clone)]
 pub struct FunctionDeclaration {
     pub name: String,
-    pub arg_refs: Vec<bool>,
     pub arg_names: Vec<String>,
     pub arg_types: Vec<Type>,
+    pub arg_refs: Vec<bool>,
     pub arg_optionals: Vec<Expr>,
     pub returns: Type,
     pub id: usize,
@@ -43,17 +43,23 @@ impl FunctionDeclaration {
             for (index, (name, kind, is_ref)) in izip!(self.arg_names.clone(), &function.args, arg_refs).enumerate() {
                 let indent = meta.gen_indent();
                 match (is_ref, kind) {
-                    (false, Type::Array(_)) => result.push(format!("{indent}local {name}=(\"${{!{}}}\")", index + 1)),
                     (true, Type::Array(_)) => {
                         result.push(format!("{indent}local __AMBER_ARRAY_{name}=\"${}[@]\"", index + 1));
-                        result.push(format!("{indent}local {name}=${}", index + 1))
-                    },
-                    _ => result.push(format!("{indent}local {name}=${}", index + 1))
+                        result.push(format!("{indent}local {name}=${}", index + 1));
+                    }
+                    (false, Type::Array(_)) => {
+                        result.push(format!("{indent}local {name}=(\"${{!{}}}\")", index + 1));
+                    }
+                    _ => {
+                        result.push(format!("{indent}local {name}=${}", index + 1));
+                    }
                 }
             }
             meta.decrease_indent();
             Some(result.join("\n"))
-        } else { None }
+        } else {
+            None
+        }
     }
 
     fn get_space(&self, parentheses: usize, before: &str, word: &str) -> String {
@@ -166,15 +172,15 @@ impl SyntaxModule<ParserMetadata> for FunctionDeclaration {
                     let mut arg_type = Type::Generic;
                     match token(meta, ":") {
                         Ok(_) => {
-                            self.arg_refs.push(is_ref);
-                            self.arg_names.push(name.clone());
                             arg_type = parse_type(meta)?;
+                            self.arg_names.push(name.clone());
                             self.arg_types.push(arg_type.clone());
-                        },
-                        Err(_) => {
                             self.arg_refs.push(is_ref);
+                        }
+                        Err(_) => {
                             self.arg_names.push(name.clone());
                             self.arg_types.push(Type::Generic);
+                            self.arg_refs.push(is_ref);
                         }
                     }
                     if let Type::Failable(_) = arg_type {
