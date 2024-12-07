@@ -1,8 +1,8 @@
 import {
-    replace,
+    replace_all,
     replace_regex,
 } from "std/text"
-import { sum, abs } from "std/math"
+import { sum, abs, } from "std/math"
 
 // Output
 // c

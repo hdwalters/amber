@@ -1,12 +1,11 @@
-#! /usr/bin/env amber
-
+#!/usr/bin/env amber
 import {
-    replace,
+    replace_all,
     starts_with,
-    words,
+    split_words,
 } from "std/text"
 
-main (args) {
+main(args) {
     let keywords = [Text]
     let should_append = false
     for line in lines("grammar.ebnf") {
