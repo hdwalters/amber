@@ -49,6 +49,9 @@ use crate::modules::function::invocation::FunctionInvocation;
 use crate::modules::builtin::lines::LinesInvocation;
 use crate::modules::builtin::nameof::Nameof;
 use crate::{document_expression, parse_expr, parse_expr_group, translate_expression};
+use crate::modules::builtin::cli::getopt::GetoptCli;
+use crate::modules::builtin::cli::param::ParamCli;
+use crate::modules::builtin::cli::parser::ParserCli;
 use crate::utils::payload::Payload;
 
 #[derive(Debug, Clone)]
@@ -74,6 +77,9 @@ pub enum ExprType {
     Neq(Neq),
     Not(Not),
     Ternary(Ternary),
+    ParserCli(ParserCli),
+    ParamCli(ParamCli),
+    GetoptCli(GetoptCli),
     LinesInvocation(LinesInvocation),
     FunctionInvocation(FunctionInvocation),
     Command(Command),
@@ -133,8 +139,16 @@ impl Expr {
         }
     }
 
+    pub fn get_literal_text(&self) -> Option<String> {
+        match &self.value {
+            Some(ExprType::Text(text)) => text.get_literal_text(),
+            _ => None,
+        }
+    }
+
     pub fn get_payload(&self) -> Option<Payload> {
         match &self.value {
+            Some(ExprType::ParserCli(parser)) => parser.get_payload(),
             _ => None,
         }
     }
@@ -167,6 +181,8 @@ impl SyntaxModule<ParserMetadata> for Expr {
                 // Literals
                 Parentheses, Bool, Number, Text,
                 Array, Null, Status, Nameof,
+                // Command line parser
+                ParserCli, ParamCli, GetoptCli,
                 // Builtin invocation
                 LinesInvocation,
                 // Function invocation
@@ -198,6 +214,8 @@ impl TranslateModule for Expr {
             // Literals
             Parentheses, Bool, Number, Text,
             Array, Null, Status,
+            // Command line parser
+            ParserCli, ParamCli, GetoptCli,
             // Builtin invocation
             LinesInvocation,
             // Function invocation
@@ -226,6 +244,8 @@ impl DocumentationModule for Expr {
             // Literals
             Parentheses, Bool, Number, Text,
             Array, Null, Status,
+            // Command line parser
+            ParserCli, ParamCli, GetoptCli,
             // Builtin invocation
             LinesInvocation,
             // Function invocation
