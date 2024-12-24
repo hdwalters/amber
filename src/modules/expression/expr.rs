@@ -49,6 +49,7 @@ use crate::modules::function::invocation::FunctionInvocation;
 use crate::modules::builtin::lines::LinesInvocation;
 use crate::modules::builtin::nameof::Nameof;
 use crate::{document_expression, parse_expr, parse_expr_group, translate_expression};
+use crate::utils::payload::Payload;
 
 #[derive(Debug, Clone)]
 pub enum ExprType {
@@ -101,14 +102,6 @@ impl Typed for Expr {
 }
 
 impl Expr {
-    pub fn get_integer_value(&self) -> Option<isize> {
-        match &self.value {
-            Some(ExprType::Number(value)) => value.get_integer_value(),
-            Some(ExprType::Neg(value)) => value.get_integer_value(),
-            _ => None,
-        }
-    }
-
     pub fn get_position(&self, meta: &mut ParserMetadata) -> PositionInfo {
         let begin = meta.get_token_at(self.pos.0);
         let end = meta.get_token_at(self.pos.1);
@@ -129,6 +122,20 @@ impl Expr {
         match &self.value {
             Some(ExprType::VariableGet(var)) => Some(var.get_translated_name()),
             _ => None
+        }
+    }
+
+    pub fn get_integer_value(&self) -> Option<isize> {
+        match &self.value {
+            Some(ExprType::Number(value)) => value.get_integer_value(),
+            Some(ExprType::Neg(value)) => value.get_integer_value(),
+            _ => None,
+        }
+    }
+
+    pub fn get_payload(&self) -> Option<Payload> {
+        match &self.value {
+            _ => None,
         }
     }
 }
