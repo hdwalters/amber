@@ -9,7 +9,7 @@ use heraclitus_compiler::prelude::*;
 pub struct Main {
     pub args: Option<String>,
     pub block: Block,
-    pub is_skipped: bool
+    pub is_skipped: bool,
 }
 
 impl SyntaxModule<ParserMetadata> for Main {

@@ -17,7 +17,7 @@ pub struct IterLoop {
     iter_expr: Expr,
     iter_index: Option<String>,
     iter_name: String,
-    iter_type: Type
+    iter_type: Type,
 }
 
 impl SyntaxModule<ParserMetadata> for IterLoop {

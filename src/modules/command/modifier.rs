@@ -8,7 +8,7 @@ pub struct CommandModifier {
     pub block: Box<Block>,
     pub is_block: bool,
     pub is_trust: bool,
-    pub is_silent: bool
+    pub is_silent: bool,
 }
 
 impl CommandModifier {
@@ -75,7 +75,7 @@ impl SyntaxModule<ParserMetadata> for CommandModifier {
             block: Box::new(Block::new()),
             is_block: true,
             is_trust: false,
-            is_silent: false
+            is_silent: false,
         }
     }
 

@@ -241,7 +241,7 @@ impl SyntaxModule<ParserMetadata> for FunctionDeclaration {
                     returns: self.returns.clone(),
                     arg_optionals: self.arg_optionals.clone(),
                     is_public: self.is_public,
-                    is_failable
+                    is_failable,
                 }, ctx)?;
                 Ok(())
             })?;

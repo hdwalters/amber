@@ -22,7 +22,7 @@ pub struct FunctionInvocation {
     col: usize,
     failed: Failed,
     modifier: CommandModifier,
-    is_failable: bool
+    is_failable: bool,
 }
 
 impl Typed for FunctionInvocation {

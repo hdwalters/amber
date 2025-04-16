@@ -14,7 +14,7 @@ pub struct Command {
     strings: Vec<String>,
     interps: Vec<Expr>,
     modifier: CommandModifier,
-    failed: Failed
+    failed: Failed,
 }
 
 impl Typed for Command {

@@ -26,7 +26,7 @@ impl SyntaxModule<ParserMetadata> for ShorthandDiv {
             expr: Box::new(Expr::new()),
             kind: Type::Null,
             global_id: None,
-            is_ref: false
+            is_ref: false,
         }
     }
 

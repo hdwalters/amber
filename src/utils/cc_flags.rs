@@ -4,7 +4,7 @@ pub enum CCFlags {
     AllowGenericReturn,
     AllowAbsurdCast,
     AllowCamelCase,
-    UndefinedFlag
+    UndefinedFlag,
 }
 
 pub fn get_ccflag_by_name(flag: &str) -> CCFlags {
@@ -13,7 +13,7 @@ pub fn get_ccflag_by_name(flag: &str) -> CCFlags {
         "allow_generic_return" => CCFlags::AllowGenericReturn,
         "allow_camel_case" => CCFlags::AllowCamelCase,
         "allow_absurd_cast" => CCFlags::AllowAbsurdCast,
-        _ => CCFlags::UndefinedFlag
+        _ => CCFlags::UndefinedFlag,
     }
 }
 

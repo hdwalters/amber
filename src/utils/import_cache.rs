@@ -77,7 +77,7 @@ impl ImportCache {
                 let dst_path_id = self.files.len();
                 self.files.push(FileCache {
                     path: dst_path,
-                    metadata: None
+                    metadata: None,
                 });
                 self.import_graph.push(vec![]);
                 self.import_graph[src_path_id].push(dst_path_id);

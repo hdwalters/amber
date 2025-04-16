@@ -9,7 +9,7 @@ pub struct FunctionInstance {
     pub variant_id: usize,
     pub args: Vec<Type>,
     pub returns: Type,
-    pub block: Block
+    pub block: Block,
 }
 
 #[derive(Debug)]

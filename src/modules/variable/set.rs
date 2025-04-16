@@ -26,7 +26,7 @@ impl SyntaxModule<ParserMetadata> for VariableSet {
             expr: Box::new(Expr::new()),
             global_id: None,
             index: None,
-            is_ref: false
+            is_ref: false,
         }
     }
 

@@ -30,7 +30,7 @@ impl FunctionInterface {
             is_args_typed,
             is_public: self.is_public,
             is_failable: self.is_failable,
-            id
+            id,
         }
     }
 
@@ -39,7 +39,7 @@ impl FunctionInterface {
             variant_id: 0,
             args: self.arg_types,
             returns: self.returns,
-            block
+            block,
         }
     }
 }

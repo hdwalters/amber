@@ -4,7 +4,7 @@ use crate::utils::TranslateMetadata;
 #[derive(Debug, Clone)]
 enum ListFragmentSeparator {
     Space,
-    Empty
+    Empty,
 }
 
 /// Represents a list of fragments that can be separated by a given separator.

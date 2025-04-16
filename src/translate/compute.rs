@@ -23,7 +23,7 @@ pub enum ArithOp {
     Neq,
     Not,
     And,
-    Or
+    Or,
 }
 
 pub fn translate_computation(

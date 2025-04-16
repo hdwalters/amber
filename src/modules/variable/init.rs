@@ -35,7 +35,7 @@ impl SyntaxModule<ParserMetadata> for VariableInit {
             expr: Box::new(Expr::new()),
             global_id: None,
             is_fun_ctx: false,
-            is_const: false
+            is_const: false,
         }
     }
 

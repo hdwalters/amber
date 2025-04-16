@@ -12,7 +12,7 @@ use heraclitus_compiler::prelude::*;
 pub struct Fail {
     pub expr: Expr,
     pub code: String,
-    pub is_main: bool
+    pub is_main: bool,
 }
 
 impl Typed for Fail {
