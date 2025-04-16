@@ -1,7 +1,8 @@
 use crate::modules::prelude::*;
-use crate::raw_fragment;
+use crate::modules::types::Type;
+use crate::utils::ParserMetadata;
+use crate::{fragments, raw_fragment};
 use heraclitus_compiler::prelude::*;
-use crate::{fragments, modules::types::Type, utils::ParserMetadata};
 
 pub mod module;
 pub mod fragments;

@@ -1,9 +1,9 @@
-use heraclitus_compiler::prelude::*;
 use crate::fragments;
-use crate::modules::prelude::*;
 use crate::modules::expression::expr::Expr;
+use crate::modules::prelude::*;
 use crate::modules::types::{Type, Typed};
 use crate::utils::function_metadata::FunctionMetadata;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Return {

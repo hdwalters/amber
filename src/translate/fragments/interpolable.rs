@@ -1,7 +1,6 @@
-use std::collections::VecDeque;
-
-use crate::utils::TranslateMetadata;
 use super::fragment::{FragmentKind, FragmentRenderable};
+use crate::utils::TranslateMetadata;
+use std::collections::VecDeque;
 
 /// Represents a region that can be interpolated. Similarily to what Heraclitus returns when parsing a region.
 #[derive(Debug, Clone)]

@@ -1,7 +1,7 @@
-use heraclitus_compiler::prelude::*;
 use crate::modules::expression::expr::Expr;
-use crate::modules::types::{try_parse_type, Type, Typed};
 use crate::modules::prelude::*;
+use crate::modules::types::{try_parse_type, Type, Typed};
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Array {

@@ -1,8 +1,8 @@
-use crate::modules::{types::Type, block::Block};
+use super::context::FunctionDecl;
+use super::function_cache::FunctionInstance;
+use crate::modules::block::Block;
 use crate::modules::expression::expr::Expr;
-use super::{context::FunctionDecl, function_cache::FunctionInstance};
-
-
+use crate::modules::types::Type;
 
 #[derive(Clone, Debug)]
 pub struct FunctionInterface {

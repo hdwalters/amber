@@ -1,13 +1,13 @@
-use std::mem::swap;
-use crate::modules::types::{Type, Typed};
-use crate::modules::expression::literal::bool;
+use super::modifier::CommandModifier;
+use crate::fragments;
 use crate::modules::condition::failed::Failed;
 use crate::modules::expression::expr::Expr;
+use crate::modules::expression::literal::bool;
 use crate::modules::expression::literal::parse_interpolated_region;
-use super::modifier::CommandModifier;
-use heraclitus_compiler::prelude::*;
 use crate::modules::prelude::*;
-use crate::fragments;
+use crate::modules::types::{Type, Typed};
+use heraclitus_compiler::prelude::*;
+use std::mem::swap;
 
 #[derive(Debug, Clone)]
 pub struct Command {

@@ -1,7 +1,10 @@
-use heraclitus_compiler::prelude::*;
-use crate::{docs::module::DocumentationModule, modules::{prelude::FragmentKind, types::{Type, Typed}}, utils::metadata::ParserMetadata};
-use crate::translate::module::TranslateModule;
 use super::expr::Expr;
+use crate::docs::module::DocumentationModule;
+use crate::modules::prelude::FragmentKind;
+use crate::modules::types::{Type, Typed};
+use crate::translate::module::TranslateModule;
+use crate::utils::metadata::ParserMetadata;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Parentheses {

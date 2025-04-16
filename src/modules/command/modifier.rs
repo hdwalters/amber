@@ -1,7 +1,7 @@
-use std::mem::swap;
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
 use crate::modules::block::Block;
+use crate::modules::prelude::*;
+use heraclitus_compiler::prelude::*;
+use std::mem::swap;
 
 #[derive(Debug, Clone)]
 pub struct CommandModifier {

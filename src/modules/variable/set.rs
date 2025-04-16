@@ -1,11 +1,12 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
-use crate::docs::module::DocumentationModule;
-use crate::translate::gen_intermediate_variable;
-use crate::{modules::expression::expr::Expr, translate::module::TranslateModule};
-use crate::utils::{ParserMetadata, TranslateMetadata};
 use super::{handle_index_accessor, handle_variable_reference, prevent_constant_mutation, variable_name_extensions};
-use crate::modules::types::{Typed, Type};
+use crate::docs::module::DocumentationModule;
+use crate::modules::expression::expr::Expr;
+use crate::modules::prelude::*;
+use crate::modules::types::{Type, Typed};
+use crate::translate::gen_intermediate_variable;
+use crate::translate::module::TranslateModule;
+use crate::utils::{ParserMetadata, TranslateMetadata};
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct VariableSet {

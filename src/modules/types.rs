@@ -1,7 +1,6 @@
-use std::fmt::Display;
-
-use heraclitus_compiler::prelude::*;
 use crate::utils::ParserMetadata;
+use heraclitus_compiler::prelude::*;
+use std::fmt::Display;
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
 pub enum Type {

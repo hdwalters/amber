@@ -1,9 +1,9 @@
-use heraclitus_compiler::prelude::*;
 use crate::docs::module::DocumentationModule;
 use crate::fragments;
+use crate::modules::prelude::*;
 use crate::translate::module::TranslateModule;
 use crate::utils::metadata::{ParserMetadata, TranslateMetadata};
-use crate::modules::prelude::*;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Break;

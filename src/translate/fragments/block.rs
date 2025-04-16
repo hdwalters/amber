@@ -1,6 +1,6 @@
-use std::mem;
 use super::fragment::{FragmentKind, FragmentRenderable};
 use crate::utils::TranslateMetadata;
+use std::mem;
 
 /// Renders blocks of statements in Bash code.
 

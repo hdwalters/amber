@@ -1,8 +1,8 @@
-use heraclitus_compiler::prelude::*;
 use crate::fragments;
-use crate::modules::prelude::*;
 use crate::modules::block::Block;
+use crate::modules::prelude::*;
 use crate::modules::statement::stmt::Statement;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Failed {

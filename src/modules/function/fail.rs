@@ -1,12 +1,12 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
-use crate::{fragments, raw_fragment};
 use crate::docs::module::DocumentationModule;
 use crate::modules::expression::expr::Expr;
 use crate::modules::prelude::FragmentKind;
+use crate::modules::prelude::*;
 use crate::modules::types::{Type, Typed};
-use crate::utils::metadata::{ParserMetadata, TranslateMetadata};
 use crate::translate::module::TranslateModule;
+use crate::utils::metadata::{ParserMetadata, TranslateMetadata};
+use crate::{fragments, raw_fragment};
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Fail {

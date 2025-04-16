@@ -1,6 +1,6 @@
-use heraclitus_compiler::prelude::*;
-use crate::utils::metadata::ParserMetadata;
 use crate::modules::expression::expr::Expr;
+use crate::utils::metadata::ParserMetadata;
+use heraclitus_compiler::prelude::*;
 
 pub mod bool;
 pub mod number;

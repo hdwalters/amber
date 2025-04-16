@@ -1,13 +1,12 @@
-use std::collections::BTreeSet;
-
-use heraclitus_compiler::prelude::*;
-use amber_meta::ContextManager;
 use crate::modules::block::Block;
 use crate::modules::types::Type;
-use crate::utils::context::{Context, ScopeUnit, VariableDecl, FunctionDecl};
+use crate::utils::context::{Context, FunctionDecl, ScopeUnit, VariableDecl};
+use crate::utils::function_cache::FunctionCache;
 use crate::utils::function_interface::FunctionInterface;
 use crate::utils::import_cache::ImportCache;
-use crate::utils::function_cache::FunctionCache;
+use amber_meta::ContextManager;
+use heraclitus_compiler::prelude::*;
+use std::collections::BTreeSet;
 
 #[derive(Debug, ContextManager)]
 pub struct ParserMetadata {

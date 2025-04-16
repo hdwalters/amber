@@ -1,47 +1,35 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
-use crate::docs::module::DocumentationModule;
-use crate::utils::metadata::{ParserMetadata, TranslateMetadata};
-use crate::modules::expression::expr::{Expr, ExprType};
-use crate::translate::module::TranslateModule;
-use crate::modules::variable::{
-    init::VariableInit,
-    set::VariableSet,
-};
-use crate::modules::command::modifier::CommandModifier;
-use crate::handle_types;
-use crate::modules::condition::{
-    ifchain::IfChain,
-    ifcond::IfCondition,
-};
-use crate::modules::shorthand::{
-    add::ShorthandAdd,
-    sub::ShorthandSub,
-    mul::ShorthandMul,
-    div::ShorthandDiv,
-    modulo::ShorthandModulo,
-};
-use crate::modules::loops::{
-    infinite_loop::InfiniteLoop,
-    iter_loop::IterLoop,
-    break_stmt::Break,
-    continue_stmt::Continue,
-};
-use crate::modules::function::{
-    declaration::FunctionDeclaration,
-    ret::Return,
-    fail::Fail,
-};
-use crate::modules::imports::import::Import;
-use crate::modules::main::Main;
-use crate::modules::builtin::{
-    echo::Echo,
-    mv::Mv,
-    cd::Cd,
-    exit::Exit,
-};
-use super::comment_doc::CommentDoc;
 use super::comment::Comment;
+use super::comment_doc::CommentDoc;
+use crate::docs::module::DocumentationModule;
+use crate::handle_types;
+use crate::modules::builtin::cd::Cd;
+use crate::modules::builtin::echo::Echo;
+use crate::modules::builtin::exit::Exit;
+use crate::modules::builtin::mv::Mv;
+use crate::modules::command::modifier::CommandModifier;
+use crate::modules::condition::ifchain::IfChain;
+use crate::modules::condition::ifcond::IfCondition;
+use crate::modules::expression::expr::{Expr, ExprType};
+use crate::modules::function::declaration::FunctionDeclaration;
+use crate::modules::function::fail::Fail;
+use crate::modules::function::ret::Return;
+use crate::modules::imports::import::Import;
+use crate::modules::loops::break_stmt::Break;
+use crate::modules::loops::continue_stmt::Continue;
+use crate::modules::loops::infinite_loop::InfiniteLoop;
+use crate::modules::loops::iter_loop::IterLoop;
+use crate::modules::main::Main;
+use crate::modules::prelude::*;
+use crate::modules::shorthand::add::ShorthandAdd;
+use crate::modules::shorthand::div::ShorthandDiv;
+use crate::modules::shorthand::modulo::ShorthandModulo;
+use crate::modules::shorthand::mul::ShorthandMul;
+use crate::modules::shorthand::sub::ShorthandSub;
+use crate::modules::variable::init::VariableInit;
+use crate::modules::variable::set::VariableSet;
+use crate::translate::module::TranslateModule;
+use crate::utils::metadata::{ParserMetadata, TranslateMetadata};
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub enum StatementType {

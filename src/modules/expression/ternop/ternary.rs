@@ -1,11 +1,11 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
+use super::TernOp;
 use crate::docs::module::DocumentationModule;
 use crate::fragments;
 use crate::modules::expression::binop::get_binop_position_info;
-use crate::modules::types::{Type, Typed};
 use crate::modules::expression::expr::Expr;
-use super::TernOp;
+use crate::modules::prelude::*;
+use crate::modules::types::{Type, Typed};
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Ternary {

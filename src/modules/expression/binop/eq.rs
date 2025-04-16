@@ -1,11 +1,11 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
-use crate::fragments;
-use crate::{handle_binop, error_type_match};
-use crate::modules::expression::expr::Expr;
-use crate::translate::compute::{ArithOp, translate_computation};
 use super::BinOp;
-use crate::modules::types::{Typed, Type};
+use crate::fragments;
+use crate::modules::expression::expr::Expr;
+use crate::modules::prelude::*;
+use crate::modules::types::{Type, Typed};
+use crate::translate::compute::{translate_computation, ArithOp};
+use crate::{error_type_match, handle_binop};
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Eq {

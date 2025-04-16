@@ -1,6 +1,6 @@
+use crate::utils::ParserMetadata;
 use heraclitus_compiler::prelude::*;
 use std::path::Path;
-use crate::utils::ParserMetadata;
 
 #[derive(Debug, Clone)]
 pub struct ImportString {

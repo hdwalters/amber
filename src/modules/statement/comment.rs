@@ -1,5 +1,5 @@
-use heraclitus_compiler::prelude::*;
 use crate::modules::prelude::*;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Comment {

@@ -1,8 +1,9 @@
-use heraclitus_compiler::prelude::*;
-use crate::{modules::prelude::*, translate::gen_intermediate_variable};
-use crate::modules::types::Typed;
+use super::{handle_identifier_name, variable_name_extensions};
 use crate::modules::expression::expr::Expr;
-use super::{variable_name_extensions, handle_identifier_name};
+use crate::modules::prelude::*;
+use crate::modules::types::Typed;
+use crate::translate::gen_intermediate_variable;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct VariableInit {

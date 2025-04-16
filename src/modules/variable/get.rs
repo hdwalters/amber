@@ -1,7 +1,7 @@
 use crate::modules::expression::expr::{Expr, ExprType};
+use crate::modules::prelude::*;
 use crate::modules::types::{Type, Typed};
 use crate::modules::variable::{handle_index_accessor, handle_variable_reference, variable_name_extensions};
-use crate::modules::prelude::*;
 use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]

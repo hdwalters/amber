@@ -1,10 +1,9 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
-use crate::modules::expression::expr::Expr;
-use crate::utils::cc_flags::{get_ccflag_name, CCFlags};
-use crate::modules::types::{Type, Typed};
-
 use super::TypeOp;
+use crate::modules::expression::expr::Expr;
+use crate::modules::prelude::*;
+use crate::modules::types::{Type, Typed};
+use crate::utils::cc_flags::{get_ccflag_name, CCFlags};
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Cast {

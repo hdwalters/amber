@@ -1,9 +1,9 @@
-use crate::modules::prelude::*;
-use crate::utils::TranslateMetadata;
-use crate::modules::types::Type;
-use crate::modules::prelude::RawFragment;
-use crate::modules::expression::expr::{Expr, ExprType};
 use super::fragment::{FragmentKind, FragmentRenderable};
+use crate::modules::expression::expr::{Expr, ExprType};
+use crate::modules::prelude::RawFragment;
+use crate::modules::prelude::*;
+use crate::modules::types::Type;
+use crate::utils::TranslateMetadata;
 
 /// Represents a variable expression such as `$var` or `${var}`
 #[derive(Debug, Clone)]

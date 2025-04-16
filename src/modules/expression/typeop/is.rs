@@ -1,10 +1,9 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
+use super::TypeOp;
 use crate::fragments;
 use crate::modules::expression::expr::Expr;
-use crate::modules::types::{Typed, Type};
-
-use super::TypeOp;
+use crate::modules::prelude::*;
+use crate::modules::types::{Type, Typed};
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Is {

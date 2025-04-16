@@ -1,4 +1,5 @@
-use super::{cc_flags::CCFlags, function_interface::FunctionInterface};
+use super::cc_flags::CCFlags;
+use super::function_interface::FunctionInterface;
 use crate::modules::expression::expr::Expr;
 use crate::modules::types::Type;
 use amber_meta::ContextHelper;

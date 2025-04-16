@@ -1,10 +1,9 @@
-use heraclitus_compiler::prelude::*;
-use crate::raw_fragment;
-use crate::modules::types::Type;
+use super::variable::variable_name_extensions;
 use crate::modules::block::Block;
 use crate::modules::prelude::*;
-
-use super::variable::variable_name_extensions;
+use crate::modules::types::Type;
+use crate::raw_fragment;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Main {

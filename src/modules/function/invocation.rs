@@ -1,15 +1,14 @@
-use std::mem::swap;
-
-use heraclitus_compiler::prelude::*;
-use crate::{fragments, raw_fragment};
-use crate::modules::prelude::*;
-use itertools::izip;
+use super::invocation_utils::*;
 use crate::modules::command::modifier::CommandModifier;
 use crate::modules::condition::failed::Failed;
+use crate::modules::expression::expr::{Expr, ExprType};
+use crate::modules::prelude::*;
 use crate::modules::types::{Type, Typed};
 use crate::modules::variable::variable_name_extensions;
-use crate::modules::expression::expr::{Expr, ExprType};
-use super::invocation_utils::*;
+use crate::{fragments, raw_fragment};
+use heraclitus_compiler::prelude::*;
+use itertools::izip;
+use std::mem::swap;
 
 #[derive(Debug, Clone)]
 pub struct FunctionInvocation {

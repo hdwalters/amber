@@ -1,5 +1,3 @@
-use std::mem::swap;
-
 use crate::fragments;
 use crate::modules::command::modifier::CommandModifier;
 use crate::modules::condition::failed::Failed;
@@ -7,6 +5,7 @@ use crate::modules::expression::expr::Expr;
 use crate::modules::prelude::*;
 use crate::modules::types::{Type, Typed};
 use heraclitus_compiler::prelude::*;
+use std::mem::swap;
 
 #[derive(Debug, Clone)]
 pub struct Mv {

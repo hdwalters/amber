@@ -1,10 +1,10 @@
-use itertools::izip;
-use heraclitus_compiler::prelude::*;
-use similar_string::find_best_similarity;
 use crate::modules::block::Block;
 use crate::modules::types::Type;
-use crate::utils::ParserMetadata;
 use crate::utils::context::FunctionDecl;
+use crate::utils::ParserMetadata;
+use heraclitus_compiler::prelude::*;
+use itertools::izip;
+use similar_string::find_best_similarity;
 
 // Convert a number to an ordinal number
 // Eg. 1 -> 1st, 2 -> 2nd, 3 -> 3rd, 4 -> 4th

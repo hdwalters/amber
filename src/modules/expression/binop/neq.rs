@@ -1,10 +1,10 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
-use crate::{error_type_match, fragments, handle_binop};
-use crate::translate::compute::{translate_computation, ArithOp};
-use crate::modules::expression::expr::Expr;
 use super::BinOp;
-use crate::modules::types::{Typed, Type};
+use crate::modules::expression::expr::Expr;
+use crate::modules::prelude::*;
+use crate::modules::types::{Type, Typed};
+use crate::translate::compute::{translate_computation, ArithOp};
+use crate::{error_type_match, fragments, handle_binop};
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Neq {

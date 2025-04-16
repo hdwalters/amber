@@ -2,7 +2,7 @@ use crate::docs::module::DocumentationModule;
 use crate::error_type_match;
 use crate::modules::expression::expr::Expr;
 use crate::modules::expression::unop::UnOp;
-use crate::modules::prelude::{RawFragment, FragmentKind, FragmentRenderable};
+use crate::modules::prelude::{FragmentKind, FragmentRenderable, RawFragment};
 use crate::modules::types::{Type, Typed};
 use crate::translate::compute::{translate_computation, ArithOp};
 use crate::translate::module::TranslateModule;

@@ -1,7 +1,6 @@
+use super::compile_code;
 use crate::compiler::postprocessor::PostProcessor;
 use crate::tests::eval_bash;
-
-use super::compile_code;
 
 #[test]
 fn test_each_installed_postprocessor() {

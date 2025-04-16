@@ -1,5 +1,5 @@
-use crate::modules::block::Block;
 use super::context::FunctionDecl;
+use crate::modules::block::Block;
 
 #[derive(Debug, Clone)]
 pub struct FileMetadata {

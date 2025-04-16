@@ -1,8 +1,9 @@
-use heraclitus_compiler::prelude::*;
+use crate::docs::module::DocumentationModule;
 use crate::fragments;
 use crate::modules::prelude::*;
-use crate::{docs::module::DocumentationModule, modules::types::{Type, Typed}};
+use crate::modules::types::{Type, Typed};
 use crate::translate::module::TranslateModule;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Null {}

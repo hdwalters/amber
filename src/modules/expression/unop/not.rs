@@ -1,12 +1,14 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::FragmentKind;
-use crate::utils::{metadata::ParserMetadata, TranslateMetadata};
-use crate::translate::{compute::{translate_computation, ArithOp}, module::TranslateModule};
-use crate::modules::types::{Type, Typed};
-use crate::docs::module::DocumentationModule;
 use super::super::expr::Expr;
-use crate::error_type_match;
 use super::UnOp;
+use crate::docs::module::DocumentationModule;
+use crate::error_type_match;
+use crate::modules::prelude::FragmentKind;
+use crate::modules::types::{Type, Typed};
+use crate::translate::compute::{translate_computation, ArithOp};
+use crate::translate::module::TranslateModule;
+use crate::utils::metadata::ParserMetadata;
+use crate::utils::TranslateMetadata;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Not {

@@ -1,13 +1,11 @@
-use super::{
-    block::BlockFragment,
-    comment::CommentFragment,
-    eval::EvalFragment,
-    interpolable::InterpolableFragment,
-    list::ListFragment,
-    raw::RawFragment,
-    subprocess::SubprocessFragment,
-    var::VarFragment,
-};
+use super::block::BlockFragment;
+use super::comment::CommentFragment;
+use super::eval::EvalFragment;
+use super::interpolable::InterpolableFragment;
+use super::list::ListFragment;
+use super::raw::RawFragment;
+use super::subprocess::SubprocessFragment;
+use super::var::VarFragment;
 use crate::utils::TranslateMetadata;
 
 pub trait FragmentRenderable {

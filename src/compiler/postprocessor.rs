@@ -1,10 +1,9 @@
+use itertools::Itertools;
 use std::cell::RefCell;
 use std::io::{BufWriter, Write};
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
 use std::rc::Rc;
-
-use itertools::Itertools;
 use wildmatch::WildMatchPattern;
 
 #[derive(Debug, Clone)]

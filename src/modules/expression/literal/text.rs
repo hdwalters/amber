@@ -1,11 +1,10 @@
-use heraclitus_compiler::prelude::*;
+use super::parse_interpolated_region;
 use crate::docs::module::DocumentationModule;
+use crate::modules::expression::expr::Expr;
 use crate::modules::prelude::*;
 use crate::modules::types::{Type, Typed};
 use crate::translate::module::TranslateModule;
-use crate::modules::expression::expr::Expr;
-
-use super::parse_interpolated_region;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Text {

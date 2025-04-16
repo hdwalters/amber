@@ -1,15 +1,15 @@
-use heraclitus_compiler::prelude::*;
 use crate::docs::module::DocumentationModule;
+use crate::fragments;
+use crate::modules::block::Block;
 use crate::modules::expression::expr::{Expr, ExprType};
-use crate::modules::prelude::{RawFragment, FragmentKind};
-use crate::modules::types::{Typed, Type};
+use crate::modules::prelude::*;
+use crate::modules::prelude::{FragmentKind, RawFragment};
+use crate::modules::types::{Type, Typed};
 use crate::modules::variable::variable_name_extensions;
 use crate::translate::module::TranslateModule;
 use crate::utils::context::Context;
 use crate::utils::metadata::{ParserMetadata, TranslateMetadata};
-use crate::modules::block::Block;
-use crate::fragments;
-use crate::modules::prelude::*;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct IterLoop {

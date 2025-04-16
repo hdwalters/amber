@@ -1,6 +1,3 @@
-use std::cmp;
-use std::collections::VecDeque;
-
 use super::ParserMetadata;
 use crate::compiler::CompilerOptions;
 use crate::modules::prelude::*;
@@ -9,6 +6,8 @@ use crate::translate::compute::ArithType;
 use crate::translate::{gen_intermediate_variable, gen_intermediate_variable_lazy};
 use crate::utils::function_cache::FunctionCache;
 use crate::utils::function_metadata::FunctionMetadata;
+use std::cmp;
+use std::collections::VecDeque;
 
 const INDENT_SPACES: &str = "    ";
 

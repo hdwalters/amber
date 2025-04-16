@@ -3,16 +3,15 @@ use crate::built_info;
 use crate::docs::module::DocumentationModule;
 use crate::modules::block::Block;
 use crate::modules::prelude::{BlockFragment, FragmentRenderable};
+use crate::rules;
 use crate::translate::check_all_blocks;
 use crate::translate::module::TranslateModule;
 use crate::utils::{ParserMetadata, TranslateMetadata};
-use crate::rules;
-use postprocessor::PostProcessor;
 use chrono::prelude::*;
 use colored::Colorize;
 use heraclitus_compiler::prelude::*;
 use itertools::Itertools;
-use wildmatch::WildMatchPattern;
+use postprocessor::PostProcessor;
 use std::env;
 use std::fs;
 use std::fs::File;
@@ -21,6 +20,7 @@ use std::iter::once;
 use std::path::PathBuf;
 use std::process::{Command, ExitStatus};
 use std::time::Instant;
+use wildmatch::WildMatchPattern;
 
 pub mod postprocessor;
 

@@ -1,7 +1,7 @@
-use crate::modules::prelude::*;
 use crate::fragments;
 use crate::modules::expression::binop::BinOp;
 use crate::modules::expression::expr::Expr;
+use crate::modules::prelude::*;
 use crate::modules::types::{Type, Typed};
 use crate::translate::compute::{translate_computation, ArithOp};
 use crate::{error_type_match, handle_binop};

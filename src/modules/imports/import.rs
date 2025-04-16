@@ -1,12 +1,12 @@
-use std::fs;
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
+use super::import_string::ImportString;
 use crate::compiler::{AmberCompiler, CompilerOptions};
 use crate::modules::block::Block;
+use crate::modules::prelude::*;
 use crate::modules::variable::variable_name_extensions;
 use crate::stdlib;
 use crate::utils::context::{Context, FunctionDecl};
-use super::import_string::ImportString;
+use heraclitus_compiler::prelude::*;
+use std::fs;
 
 #[derive(Debug, Clone)]
 pub struct Import {

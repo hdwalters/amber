@@ -1,55 +1,47 @@
-use heraclitus_compiler::prelude::*;
+use super::binop::add::Add;
+use super::binop::and::And;
+use super::binop::div::Div;
+use super::binop::eq::Eq;
+use super::binop::ge::Ge;
+use super::binop::gt::Gt;
+use super::binop::le::Le;
+use super::binop::lt::Lt;
+use super::binop::modulo::Modulo;
+use super::binop::mul::Mul;
+use super::binop::neq::Neq;
+use super::binop::or::Or;
+use super::binop::range::Range;
+use super::binop::sub::Sub;
+use super::literal::array::Array;
+use super::literal::bool::Bool;
+use super::literal::null::Null;
+use super::literal::number::Number;
+use super::literal::status::Status;
+use super::literal::text::Text;
+use super::parentheses::Parentheses;
+use super::ternop::ternary::Ternary;
+use super::typeop::cast::Cast;
+use super::typeop::is::Is;
+use super::unop::neg::Neg;
+use super::unop::not::Not;
 use crate::docs::module::DocumentationModule;
 use crate::modules::builtin::len::Len;
-use crate::modules::command::cmd::Command;
-use crate::modules::expression::binop::BinOp;
-use crate::modules::prelude::FragmentKind;
-use crate::modules::types::{Typed, Type};
-use crate::translate::module::TranslateModule;
-use crate::utils::{ParserMetadata, TranslateMetadata};
-use crate::modules::expression::typeop::TypeOp;
-use crate::modules::expression::ternop::TernOp;
-use crate::modules::expression::unop::UnOp;
-use crate::modules::types::parse_type;
-use super::literal::{
-    bool::Bool,
-    number::Number,
-    text::Text,
-    array::Array,
-    null::Null,
-    status::Status,
-};
-use super::binop::{
-    add::Add,
-    sub::Sub,
-    mul::Mul,
-    div::Div,
-    modulo::Modulo,
-    range::Range,
-    and::And,
-    or::Or,
-    gt::Gt,
-    ge::Ge,
-    lt::Lt,
-    le::Le,
-    eq::Eq,
-    neq::Neq,
-};
-use super::unop::{
-    not::Not,
-    neg::Neg,
-};
-use super::typeop::{
-    cast::Cast,
-    is::Is,
-};
-use super::parentheses::Parentheses;
-use crate::modules::variable::get::VariableGet;
-use super::ternop::ternary::Ternary;
-use crate::modules::function::invocation::FunctionInvocation;
 use crate::modules::builtin::lines::LinesInvocation;
 use crate::modules::builtin::nameof::Nameof;
+use crate::modules::command::cmd::Command;
+use crate::modules::expression::binop::BinOp;
+use crate::modules::expression::ternop::TernOp;
+use crate::modules::expression::typeop::TypeOp;
+use crate::modules::expression::unop::UnOp;
+use crate::modules::function::invocation::FunctionInvocation;
+use crate::modules::prelude::FragmentKind;
+use crate::modules::types::parse_type;
+use crate::modules::types::{Type, Typed};
+use crate::modules::variable::get::VariableGet;
+use crate::translate::module::TranslateModule;
+use crate::utils::{ParserMetadata, TranslateMetadata};
 use crate::{document_expression, parse_expr, parse_expr_group, translate_expression};
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub enum ExprType {

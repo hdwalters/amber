@@ -1,6 +1,7 @@
-use std::collections::HashMap;
-use crate::modules::{types::Type, block::Block};
 use super::context::Context;
+use crate::modules::block::Block;
+use crate::modules::types::Type;
+use std::collections::HashMap;
 
 #[derive(Clone, Debug)]
 /// This is a compiled function instance

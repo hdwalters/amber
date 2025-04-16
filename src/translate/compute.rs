@@ -1,9 +1,8 @@
-use crate::{modules::prelude::{FragmentKind, FragmentRenderable}, utils::TranslateMetadata};
-
-use crate::modules::prelude::*;
-use crate::fragments;
-
 use super::fragments::subprocess::SubprocessFragment;
+use crate::fragments;
+use crate::modules::prelude::*;
+use crate::modules::prelude::{FragmentKind, FragmentRenderable};
+use crate::utils::TranslateMetadata;
 
 pub enum ArithType {
     BcSed

@@ -1,7 +1,7 @@
-use heraclitus_compiler::prelude::*;
-use crate::raw_fragment;
 use crate::modules::prelude::*;
 use crate::modules::types::{Type, Typed};
+use crate::raw_fragment;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct Bool {

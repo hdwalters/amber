@@ -3,7 +3,7 @@ pub use crate::docs::module::DocumentationModule;
 pub use crate::translate::fragments::block::BlockFragment;
 pub use crate::translate::fragments::comment::CommentFragment;
 pub use crate::translate::fragments::eval::EvalFragment;
-pub use crate::translate::fragments::fragment::{FragmentRenderable, FragmentKind};
+pub use crate::translate::fragments::fragment::{FragmentKind, FragmentRenderable};
 pub use crate::translate::fragments::interpolable::{InterpolableFragment, InterpolableRenderType};
 pub use crate::translate::fragments::list::ListFragment;
 pub use crate::translate::fragments::raw::RawFragment;

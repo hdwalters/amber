@@ -1,12 +1,12 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
 use crate::error_type_match;
 use crate::modules::expression::expr::Expr;
-use crate::modules::variable::{handle_variable_reference, prevent_constant_mutation, variable_name_extensions};
-use crate::translate::compute::translate_computation_eval;
-use crate::translate::gen_intermediate_variable;
-use crate::translate::{compute::ArithOp, module::TranslateModule};
+use crate::modules::prelude::*;
 use crate::modules::types::{Type, Typed};
+use crate::modules::variable::{handle_variable_reference, prevent_constant_mutation, variable_name_extensions};
+use crate::translate::compute::{translate_computation_eval, ArithOp};
+use crate::translate::gen_intermediate_variable;
+use crate::translate::module::TranslateModule;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct ShorthandAdd {

@@ -1,10 +1,10 @@
-use heraclitus_compiler::prelude::*;
 use crate::modules::types::Type;
-use crate::utils::ParserMetadata;
 use crate::modules::variable::handle_identifier_name;
-use crate::utils::cc_flags::{CCFlags, get_ccflag_name};
+use crate::utils::cc_flags::{get_ccflag_name, CCFlags};
 use crate::utils::context::Context;
 use crate::utils::function_interface::FunctionInterface;
+use crate::utils::ParserMetadata;
+use heraclitus_compiler::prelude::*;
 
 pub fn skip_function_body(meta: &mut ParserMetadata) -> (usize, usize, bool) {
     let index_begin = meta.get_index();

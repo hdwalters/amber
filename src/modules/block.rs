@@ -1,10 +1,9 @@
-use std::collections::VecDeque;
-use std::ops::Index;
-
+use super::statement::stmt::Statement;
 use crate::modules::prelude::*;
 use heraclitus_compiler::prelude::*;
 use itertools::Itertools;
-use super::statement::stmt::Statement;
+use std::collections::VecDeque;
+use std::ops::Index;
 
 #[derive(Debug, Clone)]
 pub struct Block {

@@ -1,9 +1,9 @@
-use heraclitus_compiler::prelude::*;
-use crate::modules::prelude::*;
 use crate::fragments;
-use crate::modules::expression::expr::Expr;
 use crate::modules::block::Block;
+use crate::modules::expression::expr::Expr;
+use crate::modules::prelude::*;
 use crate::modules::statement::stmt::Statement;
+use heraclitus_compiler::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct IfChain {

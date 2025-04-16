@@ -1,24 +1,23 @@
-use std::collections::HashSet;
-use crate::raw_fragment;
-use std::{env, fs};
-use std::ffi::OsStr;
-use std::path::Path;
-
+use super::declaration_utils::*;
 use crate::fragments;
-use crate::modules::prelude::*;
-use heraclitus_compiler::prelude::*;
-use itertools::izip;
-use crate::modules::statement::comment_doc::CommentDoc;
 use crate::modules::expression::expr::Expr;
+use crate::modules::prelude::*;
+use crate::modules::statement::comment_doc::CommentDoc;
+use crate::modules::types::parse_type;
 use crate::modules::types::{Type, Typed};
 use crate::modules::variable::variable_name_extensions;
+use crate::raw_fragment;
 use crate::utils::cc_flags::get_ccflag_by_name;
 use crate::utils::context::Context;
 use crate::utils::function_cache::FunctionInstance;
 use crate::utils::function_interface::FunctionInterface;
-use crate::modules::types::parse_type;
 use crate::utils::function_metadata::FunctionMetadata;
-use super::declaration_utils::*;
+use heraclitus_compiler::prelude::*;
+use itertools::izip;
+use std::collections::HashSet;
+use std::ffi::OsStr;
+use std::path::Path;
+use std::{env, fs};
 
 #[derive(Debug, Clone)]
 pub struct FunctionDeclaration {
